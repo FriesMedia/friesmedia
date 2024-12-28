@@ -1,0 +1,173 @@
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   FriesMedia
+  </title>
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+  <style>
+   .like-button.liked {
+            color: red;
+        }
+  </style>
+ </head>
+ <body class="bg-gray-100 text-gray-900 font-roboto">
+  <header class="bg-blue-600 p-4 text-white flex justify-between items-center">
+   <h1 class="text-2xl font-bold">
+    FriesMedia
+   </h1>
+   <nav class="space-x-4">
+    <a class="hover:text-gray-300" href="frieslib.html">
+     Home
+    </a>
+    <a class="hover:text-gray-300" href="friesplay.html">
+        FriesPlay
+    </a>
+    <a class="hover:text-gray-300" href="friestv.html">
+        FriesTv
+    </a>
+    <a class="hover:text-gray-300" href="friesai.html">
+        FriesAi
+    </a>
+    <a class="hover:text-gray-300" href="friesgame.html">
+        FriesGame
+    </a>
+    <a class="hover:text-gray-300" href="friesmoney.html">
+        FriesMula
+    </a>
+    <a class="hover:text-gray-300" href="friesshop.html">
+        Fries8
+    </a>
+    <a class="hover:text-gray-300" href="frieschat.html">
+     Chat
+    </a>
+    <a class="hover:text-gray-300" href="friespro.html">
+        Profile
+    </a>
+   </nav>
+  </header>
+  <main class="p-4">
+   <section class="mb-8">
+    <h2 class="text-3xl font-bold mb-4">
+     Posts
+    </h2>
+    <div class="bg-white p-4 rounded-lg shadow-md mb-4">
+     <div class="flex items-center mb-4">
+      <img alt="User profile picture" class="w-12 h-12 rounded-full mr-4" height="50" src="https://storage.googleapis.com/a1aa/image/eOMZdZJRtrRkSyZeFzjpjxALZqJTMo9JfHwPqaDebj9UoA8PB.jpg" width="50"/>
+      <div>
+       <h3 class="text-lg font-semibold">
+        FrieMedia Officail
+       </h3>
+       <button class="follow-button bg-blue-500 text-white px-2 py-1 rounded-full">
+        Follow
+       </button>
+      </div>
+     </div>
+     <p class="mb-4">
+      Hi world! My name is Fries
+     </p>
+     <div class="flex items-center space-x-4">
+      <button class="like-button text-gray-600">
+       <i class="fas fa-heart">
+       </i>
+       Like
+      </button>
+      <button class="comment-button text-gray-600">
+       <i class="fas fa-comment">
+       </i>
+       Comment
+      </button>
+      <button class="share-button text-gray-600">
+       <i class="fas fa-share">
+       </i>
+       Share
+      </button>
+     </div>
+     <div class="comments mt-4 hidden">
+      <div class="mb-2">
+       <strong>
+        User 2:
+       </strong>
+       Great post!
+      </div>
+      <form class="comment-form flex">
+       <input class="w-full p-2 rounded-lg bg-gray-200" placeholder="Add a comment..." type="text"/>
+       <button class="bg-blue-500 text-white px-4 py-2 rounded-full ml-2" type="submit">
+        Post
+       </button>
+      </form>
+     </div>
+    </div>
+    <!-- Repeat for more posts -->
+   </section>
+  </main>
+  <footer class="bg-blue-600 p-4 text-white mt-8">
+   <div class="flex justify-between items-center">
+    <p>
+     © 2025 Fries Social Media
+    </p>
+    <nav class="space-x-4">
+     <a class="hover:text-gray-300" href="#">
+      About
+     </a>
+     <a class="hover:text-gray-300" href="#">
+      Contact
+     </a>
+     <a class="hover:text-gray-300" href="#">
+      Privacy
+     </a>
+     <a class="hover:text-gray-300" href="openfries.html">
+        Logout
+       </a>
+    </nav>
+   </div>
+  </footer>
+  <script>
+   document.querySelectorAll('.follow-button').forEach(button => {
+            button.addEventListener('click', () => {
+                if (button.textContent === 'Follow') {
+                    button.textContent = 'Unfollow';
+                    button.classList.remove('bg-blue-500');
+                    button.classList.add('bg-red-500');
+                } else {
+                    button.textContent = 'Follow';
+                    button.classList.remove('bg-red-500');
+                    button.classList.add('bg-blue-500');
+                }
+            });
+        });
+
+        document.querySelectorAll('.like-button').forEach(button => {
+            button.addEventListener('click', () => {
+                button.classList.toggle('liked');
+            });
+        });
+
+        document.querySelectorAll('.comment-button').forEach(button => {
+            button.addEventListener('click', () => {
+                const commentsSection = button.closest('.bg-white').querySelector('.comments');
+                commentsSection.classList.toggle('hidden');
+            });
+        });
+
+        document.querySelectorAll('.comment-form').forEach(form => {
+            form.addEventListener('submit', event => {
+                event.preventDefault();
+                const input = form.querySelector('input');
+                const commentText = input.value.trim();
+                if (commentText) {
+                    const newComment = document.createElement('div');
+                    newComment.classList.add('mb-2');
+                    newComment.innerHTML = `<strong>You:</strong> ${commentText}`;
+                    form.parentElement.insertBefore(newComment, form);
+                    input.value = '';
+                }
+            });
+        });
+  </script>
+ </body>
+</html>
